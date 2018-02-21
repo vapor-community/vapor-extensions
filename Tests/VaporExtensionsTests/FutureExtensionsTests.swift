@@ -1,9 +1,19 @@
+//
+//  FutureExtensionsTests.swift
+//  VaporExtensions
+//
+//  Created by Gustavo Perdomo on 02/20/18.
+//  Copyright © 2018 Vapor Community. All rights reserved.
+//
+
 import Vapor
 import XCTest
 @testable import VaporExtensions
 
-final class FutureTests: XCTestCase {
-    func testFutureTrue() throws {
+// MARK: - Methods
+
+final class FutureExtensionsTests: XCTestCase {
+    func testTrue() throws {
         let t = Future(true)
         let f = Future(false)
 
@@ -11,7 +21,7 @@ final class FutureTests: XCTestCase {
         XCTAssertThrowsError(try f.true(or: CustomError()).blockingAwait())
     }
 
-    func testFutureFalse() throws {
+    func testFalse() throws {
         let t = Future(true)
         let f = Future(false)
 
@@ -19,7 +29,7 @@ final class FutureTests: XCTestCase {
         XCTAssertEqual(try f.false(or: CustomError()).blockingAwait(), true)
     }
 
-    func testFutureEqual() throws {
+    func testEqual() throws {
         let f1 = Future(34)
         let f2 = Future("string")
 
@@ -36,7 +46,7 @@ final class FutureTests: XCTestCase {
         XCTAssertThrowsError(try f2.equal(to: "not-equal", or: CustomError()).blockingAwait())
     }
 
-    func testFutureNotEqual() throws {
+    func testNotEqual() throws {
         let f1 = Future(34)
         let f2 = Future("string")
 
@@ -54,10 +64,10 @@ final class FutureTests: XCTestCase {
     }
 
     static let allTests = [
-        ("testFutureTrue", testFutureTrue),
-        ("testFutureFalse", testFutureFalse),
-        ("testFutureEqual", testFutureEqual),
-        ("testFutureNotEqual", testFutureNotEqual)
+        ("testTrue", testTrue),
+        ("testFalse", testFalse),
+        ("testEqual", testEqual),
+        ("testNotEqual", testNotEqual)
     ]
 }
 
