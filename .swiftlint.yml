@@ -1,0 +1,33 @@
+included:
+  - Sources
+  - Tests
+  
+excluded:
+  - Packages
+  - .build
+  - .vscode
+
+opt_in_rules:
+  - empty_count
+  - force_unwrapping
+
+force_cast: warning
+
+force_try:
+  severity: warning # explicitly. Give warning only for force try
+
+type_body_length:
+  warning: 300
+  error: 400
+
+function_body_length:
+  warning: 50
+  error: 80
+
+identifier_name:
+  min_length:
+    error: 3
+  excluded:
+    - id
+    
+reporter: "emoji"
