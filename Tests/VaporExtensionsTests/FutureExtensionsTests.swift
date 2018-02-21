@@ -63,11 +63,63 @@ final class FutureExtensionsTests: XCTestCase {
         XCTAssertNoThrow(try f2.notEqual(to: "not-equal", or: CustomError()).blockingAwait())
     }
 
+    func testGreater() throws {
+        let f1 = Future(34)
+
+        XCTAssertEqual(try f1.greater(than: 10).blockingAwait(), true)
+        XCTAssertEqual(try f1.greater(than: 34).blockingAwait(), false)
+        XCTAssertEqual(try f1.greater(than: 50).blockingAwait(), false)
+
+        XCTAssertNoThrow(try f1.greater(than: 10, or: CustomError()).blockingAwait())
+        XCTAssertThrowsError(try f1.greater(than: 34, or: CustomError()).blockingAwait())
+        XCTAssertThrowsError(try f1.greater(than: 50, or: CustomError()).blockingAwait())
+    }
+
+    func testGreaterOrEqual() throws {
+        let f1 = Future(34)
+
+        XCTAssertEqual(try f1.greaterOrEqual(to: 10).blockingAwait(), true)
+        XCTAssertEqual(try f1.greaterOrEqual(to: 34).blockingAwait(), true)
+        XCTAssertEqual(try f1.greaterOrEqual(to: 50).blockingAwait(), false)
+
+        XCTAssertNoThrow(try f1.greaterOrEqual(to: 10, or: CustomError()).blockingAwait())
+        XCTAssertNoThrow(try f1.greaterOrEqual(to: 34, or: CustomError()).blockingAwait())
+        XCTAssertThrowsError(try f1.greaterOrEqual(to: 50, or: CustomError()).blockingAwait())
+    }
+
+    func testLess() throws {
+        let f1 = Future(34)
+
+        XCTAssertEqual(try f1.less(than: 10).blockingAwait(), false)
+        XCTAssertEqual(try f1.less(than: 34).blockingAwait(), false)
+        XCTAssertEqual(try f1.less(than: 50).blockingAwait(), true)
+
+        XCTAssertThrowsError(try f1.less(than: 10, or: CustomError()).blockingAwait())
+        XCTAssertThrowsError(try f1.less(than: 34, or: CustomError()).blockingAwait())
+        XCTAssertNoThrow(try f1.less(than: 50, or: CustomError()).blockingAwait())
+    }
+
+    func testLessOrEqual() throws {
+        let f1 = Future(34)
+
+        XCTAssertEqual(try f1.lessOrEqual(to: 10).blockingAwait(), false)
+        XCTAssertEqual(try f1.lessOrEqual(to: 34).blockingAwait(), true)
+        XCTAssertEqual(try f1.lessOrEqual(to: 50).blockingAwait(), true)
+
+        XCTAssertThrowsError(try f1.lessOrEqual(to: 10, or: CustomError()).blockingAwait())
+        XCTAssertNoThrow(try f1.lessOrEqual(to: 34, or: CustomError()).blockingAwait())
+        XCTAssertNoThrow(try f1.lessOrEqual(to: 50, or: CustomError()).blockingAwait())
+    }
+
     static let allTests = [
         ("testTrue", testTrue),
         ("testFalse", testFalse),
         ("testEqual", testEqual),
-        ("testNotEqual", testNotEqual)
+        ("testNotEqual", testNotEqual),
+        ("testGreater", testGreater),
+        ("testGreaterOrEqual", testGreaterOrEqual),
+        ("testLess", testLess),
+        ("testLessOrEqual", testLessOrEqual)
     ]
 }
 
