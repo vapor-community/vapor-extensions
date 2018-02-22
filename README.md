@@ -26,26 +26,20 @@ let package = Package(
 
 <p>Note that the <a href="https://swift.org/package-manager">Swift Package Manager</a> is still in early design and development, for more information checkout its <a href="https://github.com/apple/swift-package-manager">GitHub Page</a></p>
 
-## List of All Extensions
+## List of included extensions
 
-<details>
-<summary>Async Extensions</summary>
-</br>
 <ul>
-<li><a href="https://github.com/vapor-community/vapor-extensions/tree/master/Sources/FutureExtensions.swift"><code>Future extensions</code></a></li>
+<li><a href="https://github.com/vapor-community/async-extensions"><code>Async Extensions</code></a></li>
+<li><a href="https://github.com/vapor-community/engine-extensions"><code>Engine Extensions</code></a></li>
 </ul>
-</details>
 
 ## How cool is this?
 
 VaporExtensions is a library of **properties and methods**, designed to extend Vapor's functionality and productivity, staying faithful to the original Swift API design guidelines.
 
-Check [Examples.md](https://github.com/SwifterSwift/SwifterSwift/tree/master/Examples/Examples.md) for some cool examples!
+## Documentation
 
-<!-- ## Documentation
-
-Documentation for all extensions, with examples, is available at...
--->
+Since this package is a group of other extensions package, you can check the documentation on each extension package repository.
 
 ## Get involved:
 

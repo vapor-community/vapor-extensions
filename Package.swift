@@ -1,5 +1,4 @@
 // swift-tools-version:4.0
-// The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
@@ -9,10 +8,11 @@ let package = Package(
         .library(name: "VaporExtensions", targets: ["VaporExtensions"])
     ],
     dependencies: [
-        .package(url: "https://github.com/vapor/vapor.git", from: "3.0.0-beta")
+        .package(url: "https://github.com/vapor-community/async-extensions.git", .branch("beta")),
+        .package(url: "https://github.com/vapor-community/engine-extensions.git", .branch("beta"))
     ],
     targets: [
-        .target(name: "VaporExtensions", dependencies: ["Vapor"]),
+        .target(name: "VaporExtensions", dependencies: ["AsyncExtensions", "EngineExtensions"]),
         .testTarget(name: "VaporExtensionsTests", dependencies: ["VaporExtensions"])
     ]
 )

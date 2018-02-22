@@ -11,5 +11,4 @@ import XCTest
 import VaporExtensionsTests
 
 var tests = [XCTestCaseEntry]()
-tests += FutureExtensionsTests.allTests()
 XCTMain(tests)
